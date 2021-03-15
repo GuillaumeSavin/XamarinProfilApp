@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProfilApp.ProfileViewPage">
+    <Grid BackgroundColor="White" RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="0.01*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="0"  Padding="0" Margin="0">
+                    <Image Source="{Binding Background}" Aspect="AspectFill"/>
+                </Frame>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label Grid.Row="0" Grid.Column="0" Text="Vues" FontSize="18" TextColor="Gray" HorizontalOptions="Center"/>
+                    <Label Grid.Row="0" Grid.Column="2" Text="Partages" FontSize="18" TextColor="Gray" HorizontalOptions="Center"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" x:Name="varView" Text="{Binding Nbrview}" FontSize="18" FontAttributes="Bold" TextColor="Gray" HorizontalOptions="Center"/>
+                    <Label Grid.Row="1" Grid.Column="2" x:Name="varShare" Text="{Binding Nbrshare}" FontSize="18" FontAttributes="Bold" TextColor="Gray" HorizontalOptions="Center"/>
+                </Grid>
+                <Label Grid.Row="1" Text="{Binding Username}" FontSize="40" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center" VerticalOptions="End"/>
+            </Grid>
+            <Frame CornerRadius="90" HorizontalOptions="Center" VerticalOptions="Center">
+                <Image Source="{Binding Avatar}" HeightRequest="50" WidthRequest="50"/>
+            </Frame>
+        </Grid>
+        <BoxView Grid.Row="1" HeightRequest="1" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" Margin="18,0,18,0"/>
+        <Frame Grid.Row="2" Margin="0">
+            <StackLayout>
+                <Label Text="Informations" FontSize="18" FontAttributes="Bold" TextColor="Black"/>
+                <Label Text="{Binding Birthdate, StringFormat='Né le {0}'}" FontSize="18" TextColor="Black"/>
+                <Label Text="{Binding Birthplace, StringFormat='A {0}'}" FontSize="18" TextColor="Black"/>
+            </StackLayout>
+        </Frame>
+        <Frame Grid.Row="3" Margin="0">
+            <StackLayout>
+                <Label Text="Description" FontSize="18" FontAttributes="Bold" TextColor="Black"/>
+                <Label Text="{Binding Description}" FontSize="18" HorizontalTextAlignment="End" TextColor="Black"/>
+            </StackLayout>
+        </Frame>
+        <!--Suppression du bouton car juste consultation du profile-->
+        <!--
+        <Button Grid.Row="4" x:Name="btnShare" Text="Share my profile" BackgroundColor="CornflowerBlue" TextColor="White" CornerRadius="5" Margin="30,8,30,8" Command="{Binding OnButtonShareClickedCommand}" />
+        -->
+    </Grid>
+</ContentPage>
