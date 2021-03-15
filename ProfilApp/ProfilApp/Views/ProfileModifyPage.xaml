@@ -1,46 +1,44 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="ProfilApp.ProfileCreatePage">
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProfilApp.ProfileModifyPage">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="8,10,8,10">
                 <StackLayout>
                     <Label Text="Nom d'utilisateur :"/>
-                    <Entry Text="{Binding Username, Mode=OneWayToSource}"/>
+                    <Entry Text="{Binding Username, Mode=TwoWay}"/>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Description :"/>
-                    <Entry Text="{Binding Description, Mode=OneWayToSource}"/>
+                    <Entry Text="{Binding Description, Mode=TwoWay}"/>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Date de naissance :"/>
-                    <Entry Text="{Binding Birthdate, Mode=OneWayToSource}"/>
+                    <Entry Text="{Binding Birthdate, Mode=TwoWay}"/>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Lieu de Naissance :"/>
-                    <Entry Text="{Binding Birthplace, Mode=OneWayToSource}"/>
+                    <Entry Text="{Binding Birthplace, Mode=TwoWay}"/>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Nom de l'image pour l'avatar :"/>
-                    <Entry Text="{Binding Avatar, Mode=OneWayToSource}"/>
+                    <Entry Text="{Binding Avatar, Mode=TwoWay}"/>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Nom de l'image pour le fond du profile :"/>
-                    <Entry Text="{Binding Background, Mode=OneWayToSource}"/>
+                    <Entry Text="{Binding Background, Mode=TwoWay}"/>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Nombre de vues :"/>
-                    <Entry Text="{Binding Nbrview, Mode=OneWayToSource}"/>
+                    <Entry Text="{Binding Nbrview, Mode=TwoWay}"/>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Nombre de partages :"/>
-                    <Entry Text="{Binding Nbrshare, Mode=OneWayToSource}"/>
-                </StackLayout>                     
-                <Button Text="Création" Command="{Binding OnButtonCreateClickedCommand}"/>
+                    <Entry Text="{Binding Nbrshare, Mode=TwoWay}"/>
+                </StackLayout>
+                <Button Text="Modifier" Command="{Binding OnButtonModifyClickedCommand}"/>
             </StackLayout>
-            
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

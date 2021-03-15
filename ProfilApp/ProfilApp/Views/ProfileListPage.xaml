@@ -3,18 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="ProfilApp.ProfileListPage">
 
-
-    <ListView HorizontalOptions="FillAndExpand" ItemsSource="{Binding Users}" SelectedItem="{Binding UserSelected, Mode=TwoWay}" VerticalOptions="FillAndExpand" HasUnevenRows="True">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Padding="20">
-                        <Label Text="{Binding Username}"/>
-                        <Label Text="{Binding Description}"/>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <StackLayout>
+        <ListView HorizontalOptions="FillAndExpand" ItemsSource="{Binding Users}" SelectedItem="{Binding UserSelected, Mode=TwoWay}" VerticalOptions="FillAndExpand" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="20">
+                            <Label Text="{Binding Username}"/>
+                            <Label Text="{Binding Description}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout>
+            <Button Text="Création" Command="{Binding OnButtonCreateClickedCommand}"/>
+            <Button Text="Afficher" Command="{Binding OnButtonShowClickedCommand}"/>
+            <Button Text="Modifier" Command="{Binding OnButtonModifyClickedCommand}"/>
+            <Button Text="Supprimer" Command="{Binding OnButtonDeleteClickedCommand}"/>
+        </StackLayout>
+    </StackLayout>
+    
 
 </ContentPage>

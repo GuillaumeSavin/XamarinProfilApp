@@ -45,7 +45,99 @@ namespace ProfilApp.ViewModels
                 Description = "Chevalier errant"
             });
 
-        }       
+        }
+
+        public ProfileListPageViewModel(ObservableCollection<User> newUsers)
+        {
+            Users = newUsers;
+        }
+        public ICommand OnButtonCreateClickedCommand
+        {
+            get
+            {
+                return new Command(ButtonCreateClickedCommand);
+            }
+        }
+
+        void ButtonCreateClickedCommand()
+        {
+            
+            Application.Current.MainPage.Navigation.PushAsync(new ProfileCreatePage(Users));
+
+        }
+
+        public ICommand OnButtonShowClickedCommand
+        {
+            get
+            {
+                return new Command(ButtonShowClickedCommand);
+            }
+        }
+
+        void ButtonShowClickedCommand()
+        {
+            if(UserSelected != null)
+            {
+                Application.Current.MainPage.Navigation.PushAsync(new ProfileViewPage(UserSelected));
+            } 
+            else
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Application.Current.MainPage.DisplayAlert("Information", "Veuillez sélectionner un profile avant d'appuyer sur ce bouton !", "OK");
+                    UserSelected = null;
+                });
+            }
+            
+        }
+
+        public ICommand OnButtonDeleteClickedCommand
+        {
+            get
+            {
+                return new Command(ButtonDeleteClickedCommand);
+            }
+        }
+
+        void ButtonDeleteClickedCommand()
+        {
+            if (UserSelected != null)
+            {
+                Users.Remove(UserSelected);
+            }
+            else
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Application.Current.MainPage.DisplayAlert("Information", "Veuillez sélectionner un profile avant d'appuyer sur ce bouton !", "OK");
+                    UserSelected = null;
+                });
+            }
+        }
+
+        public ICommand OnButtonModifyClickedCommand
+        {
+            get
+            {
+                return new Command(ButtonModifyClickedCommand);
+            }
+        }
+
+        void ButtonModifyClickedCommand()
+        {
+            if (UserSelected != null)
+            {
+                Application.Current.MainPage.Navigation.PushAsync(new ProfileModifyPage(Users, UserSelected));
+            }
+            else
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Application.Current.MainPage.DisplayAlert("Information", "Veuillez sélectionner un profile avant d'appuyer sur ce bouton !", "OK");
+                    UserSelected = null;
+                });
+            }
+        }
 
         public User UserSelected
         {
@@ -55,13 +147,8 @@ namespace ProfilApp.ViewModels
             }
             set
             {
+                
                 SetProperty(ref userSelected, value);
-
-                if(value != null)
-                {
-                    Application.Current.MainPage.Navigation.PushAsync(new ProfileViewPage(value));
-                    UserSelected = null;
-                }
             }
         }
     }
