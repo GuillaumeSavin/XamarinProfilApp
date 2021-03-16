@@ -1,0 +1,10 @@
+﻿################################################################################
+# Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
+################################################################################
+
+/ProfilApp/ProfilApp/obj
+/ProfilApp/ProfilApp.Android/bin/Debug
+/.vs
+/ProfilApp/ProfilApp/bin/Debug/netstandard2.0
+/ProfilApp/ProfilApp.Android/obj
+/ProfilApp/ProfilApp.iOS/obj
